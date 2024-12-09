@@ -58,4 +58,13 @@ public class IngressoControllerTests {
         Double proporcaoIngressoVip =  precoIngressoVip / precoIngressoNormal;
         assertEquals(proporcaoIngressoVip, 2);
     }
+
+    @Test
+    public void testPrecoIngressoVip(){
+
+        Double precoIngressoMeia = ingressoController.precoMeia();
+        Double precoIngressoNormal = ingressoController.precoNormal();
+        Double proporcaoIngressoMeia =  precoIngressoMeia / precoIngressoNormal;
+        assertEquals(proporcaoIngressoMeia, 0.5);
+    }
 }

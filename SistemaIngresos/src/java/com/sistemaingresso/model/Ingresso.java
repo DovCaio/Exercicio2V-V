@@ -8,6 +8,7 @@ public class Ingresso {
     private TIPOINGRESSO tipo;
     private Boolean vendido;
 
+
     public Ingresso(Long id, TIPOINGRESSO tipo){
         this.id = id;
         this.tipo = tipo;

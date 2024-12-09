@@ -21,17 +21,17 @@ public class IngressoRepository {
         HashSet<Ingresso> ingressosNormal = new HashSet<Ingresso>();
         HashSet<Ingresso> ingressosMeiaEntrada = new HashSet<Ingresso>();
 
-        for (int i = 0 ; i <  qttTotal*PORCENTOVIP ; i++){
+        for (int i = 0 ; i <  Math.floor(qttTotal*PORCENTOVIP) ; i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.VIP);
             ingressosVip.add(ingresso);
         }
 
-        for (int i = 0; i < qttTotal - (qttTotal*PORCENTOVIP + qttTotal*PORCENTOMEIA); i++){
+        for (int i = 0; i < Math.floor(qttTotal - (qttTotal*PORCENTOVIP + qttTotal*PORCENTOMEIA)); i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.NORMAL);
             ingressosNormal.add(ingresso);
         }
 
-        for (int i = 0 ; i < qttTotal*PORCENTOMEIA; i++){
+        for (int i = 0 ; i < Math.floor(qttTotal*PORCENTOMEIA); i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.MEIAENTRADA);
             ingressosMeiaEntrada.add(ingresso);
         }

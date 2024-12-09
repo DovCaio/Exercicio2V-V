@@ -70,7 +70,7 @@ public class IngressoControllerTests {
 
     @Test
     public void testMarcarComoVendido(){
-        ingressoController.marcarVendido(10);
-        assertEquals(true, ingressoController.getIngresso(10));
+        ingressoController.marcarComoVendido(10L);
+        assertEquals(true, ingressoController.getIngresso(10L).getVendido());
     }
 }

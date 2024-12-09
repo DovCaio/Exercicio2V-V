@@ -1,6 +1,7 @@
 package src.java.com.sistemaingresso.controller;
 
 import src.java.com.sistemaingresso.service.IngressoService;
+import src.java.com.sistemaingresso.model.*;
 
 public class IngressoController {
 
@@ -39,6 +40,14 @@ public class IngressoController {
 
     public Double precoMeia(){
         return ingressoService.getPrecoMeia();
+    }
+
+    public void marcarComoVendido(Long id) {
+        ingressoService.marcarVendido(id);
+    }
+
+    public Ingresso getIngresso(Long id) {
+        return ingressoService.getIngresso(id);
     }
 
 }

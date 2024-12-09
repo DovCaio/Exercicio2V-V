@@ -1,6 +1,7 @@
 package src.java.com.sistemaingresso.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import src.java.com.sistemaingresso.enums.TIPOINGRESSO;
@@ -8,71 +9,71 @@ import src.java.com.sistemaingresso.model.*;
 
 public class IngressoRepository {
 
-    private HashSet<Ingresso> ingressoVip;
-    private HashSet<Ingresso> ingressoNormal;
-    private HashSet<Ingresso> ingressoMeiaEntrada;
+    private HashMap<Long, Ingresso> ingressos;
     private Long currentId;
+    private Integer qtdVip;
+    private Integer qtdMeia;
+    private Integer qtdNormal;
 
     //MUITA RESONSABILIDADE NO REPOSITORIO, MUDAR OS CALCULOS PARA O SERVICE.
-    public IngressoRepository(Integer qttTotal, Integer qtdVip, Integer qtdMeia,
+    public IngressoRepository(Integer qttTotal,
+                              Integer qtdVip,
+                              Integer qtdMeia,
                               Double precoNormal,
                               Double precoVip,
-                              Double precoMeia) {
+                              Double precoMeia
+    ) {
         currentId = 0L;
-        HashSet<Ingresso> ingressosVip = new HashSet<Ingresso>();
-        HashSet<Ingresso> ingressosNormal = new HashSet<Ingresso>();
-        HashSet<Ingresso> ingressosMeiaEntrada = new HashSet<Ingresso>();
+        this.ingressos = new HashMap<Long, Ingresso>();
 
         for (int i = 0 ; i < qtdVip ; i++){
-            Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.VIP, precoVip);
-            ingressosVip.add(ingresso);
+            Long id = currentId++;
+            Ingresso ingresso = new Ingresso(id, TIPOINGRESSO.VIP, precoVip);
+            ingressos.put(id, ingresso);
         }
 
         for (int i = 0; i < qttTotal - (qtdMeia + qtdVip); i++){
-            Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.NORMAL, precoNormal);
-            ingressosNormal.add(ingresso);
+            Long id = currentId++;
+            Ingresso ingresso = new Ingresso(id, TIPOINGRESSO.NORMAL, precoNormal);
+            ingressos.put(id, ingresso);
         }
 
         for (int i = 0 ; i < qtdMeia ; i++){
-            Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.MEIAENTRADA, precoMeia);
-            ingressosMeiaEntrada.add(ingresso);
+            Long id = currentId++;
+            Ingresso ingresso = new Ingresso(id, TIPOINGRESSO.MEIAENTRADA, precoMeia);
+            ingressos.put(id, ingresso);
         }
 
-        this.ingressoVip = ingressosVip;
-        this.ingressoNormal = ingressosNormal;
-        this.ingressoMeiaEntrada = ingressosMeiaEntrada;
-
+        this.qtdVip = qtdVip;
+        this.qtdNormal = qttTotal - (qtdMeia + qtdVip);
+        this.qtdMeia = qtdMeia;
     }
 
-    public HashSet<Ingresso> getIngressoVip() {
-        return ingressoVip;
-    }
-
-    public HashSet<Ingresso> getIngressoNormal() {
-        return ingressoNormal;
-    }
-
-    public HashSet<Ingresso> getIngressoMeiaEntrada() {
-        return ingressoMeiaEntrada;
-    }
 
     public Integer qttTotal() {
-        return this.ingressoVip.size() + this.ingressoNormal.size() + this.ingressoMeiaEntrada.size();
+        return this.ingressos.size();
     }
 
     public Integer qttVip (){
-        return this.ingressoVip.size();
+        return this.qtdVip;
 
     }
 
     public Integer qttNormal (){
-        return this.ingressoNormal.size();
+        return this.qtdNormal;
 
     }
 
     public Integer qttMeia() {
-        return this.ingressoMeiaEntrada.size();
+        return this.qtdMeia;
     }
 
+    public void setVendidoIngresso(Long id, Boolean estaodo) {
+        ingressos.get(id).setVendido(estaodo);
+    }
+
+    public Ingresso getIngresso(Long id) {
+        return ingressos.get(id);
+    }
 
 }

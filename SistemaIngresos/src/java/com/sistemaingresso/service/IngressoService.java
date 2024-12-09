@@ -1,6 +1,7 @@
 package src.java.com.sistemaingresso.service;
 
 import src.java.com.sistemaingresso.repository.IngressoRepository;
+import src.java.com.sistemaingresso.model.*;
 
 public class IngressoService {
 
@@ -61,5 +62,13 @@ public class IngressoService {
 
     public Double getPrecoMeia() {
         return precoMeia;
+    }
+
+    public void marcarVendido(Long id) {
+        ingressoRepository.setVendidoIngresso(id, true);
+    }
+
+    public Ingresso getIngresso(Long id) {
+        return ingressoRepository.getIngresso(id);
     }
 }

@@ -1,6 +1,7 @@
 package src.tests.java.com.sistemaingresso;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,5 +73,15 @@ public class IngressoControllerTests {
     public void testMarcarComoVendido(){
         ingressoController.marcarComoVendido(10L);
         assertEquals(true, ingressoController.getIngresso(10L).getVendido());
+    }
+
+    @Test void testMarcarComoVendidoException(){
+
+        assertThrows(NumberFormatException.class, () -> {
+            ingressoController.marcarComoVendido(-20L);
+        });
+        assertThrows(NumberFormatException.class, () -> {
+            ingressoController.getIngresso(-20L);
+        });
     }
 }

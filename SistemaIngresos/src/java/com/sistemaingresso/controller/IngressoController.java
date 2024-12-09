@@ -50,4 +50,5 @@ public class IngressoController {
         return ingressoService.getIngresso(id);
     }
 
+
 }

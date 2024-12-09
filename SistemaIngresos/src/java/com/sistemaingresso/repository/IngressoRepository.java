@@ -64,7 +64,7 @@ public class IngressoRepository {
     }
 
     public Integer qttNormal (){
-        return this.ingressoVip.size();
+        return this.ingressoNormal.size();
 
     }
 }

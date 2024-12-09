@@ -58,4 +58,13 @@ public class IngressoRepository {
         return this.ingressoVip.size() + this.ingressoNormal.size() + this.ingressoMeiaEntrada.size();
     }
 
+    public Integer qttVip (){
+        return this.ingressoVip.size();
+
+    }
+
+    public Integer qttNormal (){
+        return this.ingressoVip.size();
+
+    }
 }

@@ -19,8 +19,13 @@ public class IngressoService {
 
     public Integer qttVip () {
 
-        return ingressoRepository.getIngressoVip().size();
+        return ingressoRepository.qttVip();
 
     }
 
+    public Integer qttNormal () {
+
+        return ingressoRepository.qttNormal();
+
+    }
 }

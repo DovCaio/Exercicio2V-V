@@ -21,4 +21,8 @@ public class IngressoController {
         return ingressoService.qttVip();
     }
 
+    public Integer quantidadeNormal(){
+        return ingressoService.qttNormal();
+    }
+
 }

@@ -37,4 +37,8 @@ public class IngressoController {
         return ingressoService.getPrecoNormal();
     }
 
+    public Double precoMeia(){
+        return ingressoService.getPrecoMeia();
+    }
+
 }

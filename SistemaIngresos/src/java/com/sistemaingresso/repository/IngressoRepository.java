@@ -16,7 +16,8 @@ public class IngressoRepository {
     //MUITA RESONSABILIDADE NO REPOSITORIO, MUDAR OS CALCULOS PARA O SERVICE.
     public IngressoRepository(Integer qttTotal, Integer qtdVip, Integer qtdMeia,
                               Double precoNormal,
-                              Double precoVip) {
+                              Double precoVip,
+                              Double precoMeia) {
         currentId = 0L;
         HashSet<Ingresso> ingressosVip = new HashSet<Ingresso>();
         HashSet<Ingresso> ingressosNormal = new HashSet<Ingresso>();
@@ -33,7 +34,7 @@ public class IngressoRepository {
         }
 
         for (int i = 0 ; i < qtdMeia ; i++){
-            Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.MEIAENTRADA);
+            Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.MEIAENTRADA, precoMeia);
             ingressosMeiaEntrada.add(ingresso);
         }
 

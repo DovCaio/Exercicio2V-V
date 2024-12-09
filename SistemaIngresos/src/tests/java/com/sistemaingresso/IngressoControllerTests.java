@@ -60,7 +60,7 @@ public class IngressoControllerTests {
     }
 
     @Test
-    public void testPrecoIngressoVip(){
+    public void testPrecoIngressoMeia(){
 
         Double precoIngressoMeia = ingressoController.precoMeia();
         Double precoIngressoNormal = ingressoController.precoNormal();

@@ -7,12 +7,16 @@ public class IngressoService {
     private IngressoRepository ingressoRepository;
     private Double precoNormal;
     private Double precoVip;
+    private final double PORCENTOVIP = 0.3;
+    private final double PORCENTOMEIA = 0.1;
     private final Double PROPORCAOVIP = 2.0;
 
     public IngressoService(Integer qtdTotal, Double precoIngressoNormal) {
         precoNormal = precoIngressoNormal;
         precoVip = precoIngressoNormal*PROPORCAOVIP;
         this.ingressoRepository = new IngressoRepository(qtdTotal,
+                (int) Math.floor(qtdTotal*PORCENTOVIP),
+                (int) Math.floor(qtdTotal*PORCENTOMEIA),
                 precoIngressoNormal,
                 precoVip);
     }

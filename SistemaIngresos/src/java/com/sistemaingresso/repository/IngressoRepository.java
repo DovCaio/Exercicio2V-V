@@ -12,27 +12,27 @@ public class IngressoRepository {
     private HashSet<Ingresso> ingressoNormal;
     private HashSet<Ingresso> ingressoMeiaEntrada;
     private Long currentId;
-    private final double PORCENTOVIP = 0.3;
-    private final double PORCENTOMEIA = 0.1;
-    private final double PROPORCAOPRECOVIP = 2.0;
+
     //MUITA RESONSABILIDADE NO REPOSITORIO, MUDAR OS CALCULOS PARA O SERVICE.
-    public IngressoRepository(Integer qttTotal,  Double precoNormal, Double precoVip) {
+    public IngressoRepository(Integer qttTotal, Integer qtdVip, Integer qtdMeia,
+                              Double precoNormal,
+                              Double precoVip) {
         currentId = 0L;
         HashSet<Ingresso> ingressosVip = new HashSet<Ingresso>();
         HashSet<Ingresso> ingressosNormal = new HashSet<Ingresso>();
         HashSet<Ingresso> ingressosMeiaEntrada = new HashSet<Ingresso>();
 
-        for (int i = 0 ; i <  Math.floor(qttTotal*PORCENTOVIP) ; i++){
+        for (int i = 0 ; i < qtdVip ; i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.VIP, precoVip);
             ingressosVip.add(ingresso);
         }
 
-        for (int i = 0; i < Math.floor(qttTotal - (qttTotal*PORCENTOVIP + qttTotal*PORCENTOMEIA)); i++){
+        for (int i = 0; i < qttTotal - (qtdMeia + qtdVip); i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.NORMAL, precoNormal);
             ingressosNormal.add(ingresso);
         }
 
-        for (int i = 0 ; i < Math.floor(qttTotal*PORCENTOMEIA); i++){
+        for (int i = 0 ; i < qtdMeia ; i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.MEIAENTRADA);
             ingressosMeiaEntrada.add(ingresso);
         }

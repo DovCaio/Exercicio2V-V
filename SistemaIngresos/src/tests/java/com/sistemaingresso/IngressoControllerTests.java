@@ -19,12 +19,23 @@ public class IngressoControllerTests {
 
 
     @Test
-    public void testQttEngressoVip(){
+    public void testQttIngressoVip(){
 
         Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
         Double quantidadeVip = (double) ingressoController.quantidadeVip();
         Double porcentagemVip = (quantidadeVip / quantidadeTotal) * 100 ;
         assertEquals(porcentagemVip, 30, 0.5);
+
+    }
+
+    @Test
+    public void testQttIngressoNormal(){
+
+        Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
+        Double quantidadeNormal = (double) ingressoController.quantidadeNormal();
+        Double porcentagemNormal = (quantidadeNormal / quantidadeTotal) * 100 ;
+        assertEquals(porcentagemNormal, 30, 0.5);
+
 
     }
 

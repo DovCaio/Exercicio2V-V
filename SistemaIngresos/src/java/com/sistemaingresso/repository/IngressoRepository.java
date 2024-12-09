@@ -8,18 +8,18 @@ import src.java.com.sistemaingresso.model.*;
 
 public class IngressoRepository {
 
-    private ArrayList<Ingresso> ingressoVip;
-    private ArrayList<Ingresso> ingressoNormal;
-    private ArrayList<Ingresso> ingressoMeiaEntrada;
+    private HashSet<Ingresso> ingressoVip;
+    private HashSet<Ingresso> ingressoNormal;
+    private HashSet<Ingresso> ingressoMeiaEntrada;
     private Long currentId;
-    private final float PORCENTOVIP = 0.3F;
-    private final float PORCENTOMEIA = 0.1F;
+    private final double PORCENTOVIP = 0.3F;
+    private final double PORCENTOMEIA = 0.1F;
 
     public IngressoRepository(Integer qttTotal) {
         currentId = 0L;
-        ArrayList<Ingresso> ingressosVip = new ArrayList<Ingresso>();
-        ArrayList<Ingresso> ingressosNormal = new ArrayList<Ingresso>();
-        ArrayList<Ingresso> ingressosMeiaEntrada = new ArrayList<Ingresso>();
+        HashSet<Ingresso> ingressosVip = new HashSet<Ingresso>();
+        HashSet<Ingresso> ingressosNormal = new HashSet<Ingresso>();
+        HashSet<Ingresso> ingressosMeiaEntrada = new HashSet<Ingresso>();
 
         for (int i = 0 ; i <  qttTotal*PORCENTOVIP ; i++){
             Ingresso ingresso = new Ingresso(currentId++, TIPOINGRESSO.VIP);
@@ -42,15 +42,15 @@ public class IngressoRepository {
 
     }
 
-    public ArrayList<Ingresso> getIngressoVip() {
+    public HashSet<Ingresso> getIngressoVip() {
         return ingressoVip;
     }
 
-    public ArrayList<Ingresso> getIngressoNormal() {
+    public HashSet<Ingresso> getIngressoNormal() {
         return ingressoNormal;
     }
 
-    public ArrayList<Ingresso> getIngressoMeiaEntrada() {
+    public HashSet<Ingresso> getIngressoMeiaEntrada() {
         return ingressoMeiaEntrada;
     }
 

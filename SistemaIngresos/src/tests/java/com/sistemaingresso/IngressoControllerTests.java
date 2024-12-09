@@ -25,7 +25,7 @@ public class IngressoControllerTests {
         Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
         Double quantidadeVip = (double) ingressoController.quantidadeVip();
         Double porcentagemVip = (quantidadeVip / quantidadeTotal) * 100;
-        assertEquals(porcentagemVip, 30, 10);
+        assertEquals(30, porcentagemVip, 10);
 
     }
 
@@ -35,7 +35,7 @@ public class IngressoControllerTests {
         Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
         Double quantidadeNormal = (double) ingressoController.quantidadeNormal();
         Double porcentagemNormal = (quantidadeNormal / quantidadeTotal) * 100;
-        assertEquals(porcentagemNormal, 60, 10);
+        assertEquals(60, porcentagemNormal, 10);
 
 
     }
@@ -47,7 +47,7 @@ public class IngressoControllerTests {
         Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
         Double quantidadeMeia = (double) ingressoController.quantidadeMeia();
         Double porcentagemMeia = (quantidadeMeia / quantidadeTotal) * 100;
-        assertEquals(porcentagemMeia, 10, 5);
+        assertEquals(10, porcentagemMeia, 5);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class IngressoControllerTests {
         Double precoIngressoVip = ingressoController.precoVip();
         Double precoIngressoNormal = ingressoController.precoNormal();
         Double proporcaoIngressoVip =  precoIngressoVip / precoIngressoNormal;
-        assertEquals(proporcaoIngressoVip, 2);
+        assertEquals(2, proporcaoIngressoVip);
     }
 
     @Test
@@ -65,6 +65,12 @@ public class IngressoControllerTests {
         Double precoIngressoMeia = ingressoController.precoMeia();
         Double precoIngressoNormal = ingressoController.precoNormal();
         Double proporcaoIngressoMeia =  precoIngressoMeia / precoIngressoNormal;
-        assertEquals(proporcaoIngressoMeia, 0.5);
+        assertEquals(0.5, proporcaoIngressoMeia);
+    }
+
+    @Test
+    public void testMarcarComoVendido(){
+        ingressoController.marcarVendido(10);
+        assertEquals(true, ingressoController.getIngresso(10));
     }
 }

@@ -39,4 +39,12 @@ public class IngressoControllerTests {
 
     }
 
-}
+    @Test
+    public void testQttIngressoMeiaEntada(){
+
+
+        Double quantidadeTotal = (double) ingressoController.quantidadeTotal();
+        Double quantidadeMeia = (double) ingressoController.quantidadeMeia();
+        Double porcentagemMeia = (quantidadeMeia / quantidadeTotal) * 100 ;
+        assertEquals(porcentagemMeia, 10, 10);
+    }

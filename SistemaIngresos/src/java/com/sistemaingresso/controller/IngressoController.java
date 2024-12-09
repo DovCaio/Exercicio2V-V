@@ -6,9 +6,9 @@ public class IngressoController {
 
     private IngressoService ingressoService;
 
-    public IngressoController(){
+    public IngressoController(Double precoIngressoNormal){
 
-        this.ingressoService = new IngressoService(100);
+        this.ingressoService = new IngressoService(100, precoIngressoNormal);
 
     }
 
@@ -27,6 +27,14 @@ public class IngressoController {
 
     public Integer quantidadeMeia(){
         return ingressoService.qttMeia();
+    }
+
+    public Double precoVip(){
+        return ingressoService.getPrecoVip();
+    }
+
+    public Double precoNormal(){
+        return ingressoService.getPrecoNormal();
     }
 
 }

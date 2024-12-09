@@ -9,11 +9,12 @@ import src.java.com.sistemaingresso.controller.IngressoController;
 
 public class IngressoControllerTests {
 
-    IngressoController ingressoController;
+    private IngressoController ingressoController;
+    private final Double preco = 200.0;
 
     @BeforeEach
     public void setUp() {
-        this.ingressoController = new IngressoController();
+        this.ingressoController = new IngressoController(preco);
 
     }
 

@@ -7,13 +7,21 @@ public class Ingresso {
     private Long id;
     private TIPOINGRESSO tipo;
     private Boolean vendido;
-
+    private Double preco;
 
     public Ingresso(Long id, TIPOINGRESSO tipo){
         this.id = id;
         this.tipo = tipo;
         this.vendido = false;
     }
+
+    public Ingresso(Long id, TIPOINGRESSO tipo, Double preco){
+        this.id = id;
+        this.tipo = tipo;
+        this.vendido = false;
+        this.preco = preco;
+    }
+
 
     public Long getId() {
         return id;
@@ -37,5 +45,13 @@ public class Ingresso {
 
     public void setVendido(Boolean vendido) {
         this.vendido = vendido;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }

@@ -5,9 +5,16 @@ import src.java.com.sistemaingresso.repository.IngressoRepository;
 public class IngressoService {
 
     private IngressoRepository ingressoRepository;
+    private Double precoNormal;
+    private Double precoVip;
+    private final Double PROPORCAOVIP = 2.0;
 
-    public IngressoService(Integer qtdTotal) {
-        this.ingressoRepository = new IngressoRepository(qtdTotal);
+    public IngressoService(Integer qtdTotal, Double precoIngressoNormal) {
+        precoNormal = precoIngressoNormal;
+        precoVip = precoIngressoNormal*PROPORCAOVIP;
+        this.ingressoRepository = new IngressoRepository(qtdTotal,
+                precoIngressoNormal,
+                precoVip);
     }
 
 
@@ -32,4 +39,15 @@ public class IngressoService {
     public Integer qttMeia(){
         return ingressoRepository.qttMeia();
     }
+
+    public Double getPrecoNormal() {
+        return precoNormal;
+    }
+
+
+    public Double getPrecoVip() {
+        return precoVip;
+    }
+
+
 }

@@ -43,10 +43,12 @@ public class IngressoController {
     }
 
     public void marcarComoVendido(Long id) {
+        if (id < 0) throw new NumberFormatException();
         ingressoService.marcarVendido(id);
     }
 
     public Ingresso getIngresso(Long id) {
+        if (id < 0) throw new NumberFormatException();
         return ingressoService.getIngresso(id);
     }
 

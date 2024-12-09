@@ -25,4 +25,8 @@ public class IngressoController {
         return ingressoService.qttNormal();
     }
 
+    public Integer quantidadeMeia(){
+        return ingressoService.qttMeia();
+    }
+
 }

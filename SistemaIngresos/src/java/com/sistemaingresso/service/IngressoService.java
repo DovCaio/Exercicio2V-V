@@ -28,4 +28,8 @@ public class IngressoService {
         return ingressoRepository.qttNormal();
 
     }
+
+    public Integer qttMeia(){
+        return ingressoRepository.qttMeia();
+    }
 }

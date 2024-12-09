@@ -67,4 +67,8 @@ public class IngressoRepository {
         return this.ingressoNormal.size();
 
     }
+
+    public Integer qttMeia() {
+        return this.ingressoMeiaEntrada.size();
+    }
 }

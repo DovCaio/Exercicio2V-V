@@ -3,6 +3,7 @@ package src.tests.java.com.sistemaingresso;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.java.com.sistemaingresso.controller.IngressoController;
@@ -75,7 +76,8 @@ public class IngressoControllerTests {
         assertEquals(true, ingressoController.getIngresso(10L).getVendido());
     }
 
-    @Test void testMarcarComoVendidoException(){
+    @Test
+    public void testMarcarComoVendidoNegativoException(){
 
         assertThrows(NumberFormatException.class, () -> {
             ingressoController.marcarComoVendido(-20L);
@@ -83,5 +85,35 @@ public class IngressoControllerTests {
         assertThrows(NumberFormatException.class, () -> {
             ingressoController.getIngresso(-20L);
         });
+
+    }
+
+
+    @Test
+    public  void testMarcarComoVendidoMaiorqueoMaximoException(){
+
+        assertThrows(NumberFormatException.class, () -> {
+            ingressoController.marcarComoVendido(Long.MAX_VALUE + 1);
+        });
+        assertThrows(NumberFormatException.class, () -> {
+            ingressoController.getIngresso(-20L);
+        });
+
+    }
+
+    @Test
+    public void testLoteDesconto(){
+        Lote lote1 = ingressoController.getLote(10, 20);
+        Lote lote2 = ingressoController.getLote(5);
+        Lote lote3 = ingressoController.getLote(10);
+        Lote lote4 = ingressoController.getLote(0, 5);
+        Lote lote5 = ingressoController.getLote(0, 10);
+
+        assertEquals( 25 ,lote1.getDesconto());
+        assertEquals( 10 ,lote1.getDesconto());
+        assertEquals( 20 ,lote1.getDesconto());
+        assertEquals( 15 ,lote1.getDesconto());
+        assertEquals( 25 ,lote1.getDesconto());
+
     }
 }

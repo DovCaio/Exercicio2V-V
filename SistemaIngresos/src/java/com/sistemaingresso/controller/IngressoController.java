@@ -6,12 +6,12 @@ import src.java.com.sistemaingresso.service.LoteService;
 
 public class IngressoController {
 
-    private IngressoService ingressoService;
-    private LoteService loteService;
+    private final IngressoService ingressoService;
+    private final LoteService loteService;
 
-    public IngressoController(Double precoIngressoNormal){
+    public IngressoController(Double precoIngressoNormal, Integer qtdIngresso){
 
-        this.ingressoService = new IngressoService(100, precoIngressoNormal);
+        this.ingressoService = new IngressoService(qtdIngresso, precoIngressoNormal);
         this.loteService = new LoteService(ingressoService.getIngressoRepository());
 
     }

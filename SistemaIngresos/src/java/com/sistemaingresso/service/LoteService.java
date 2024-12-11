@@ -1,5 +1,6 @@
 package src.java.com.sistemaingresso.service;
 
+import src.java.com.sistemaingresso.IngressosInsuficientes;
 import src.java.com.sistemaingresso.repository.IngressoRepository;
 import src.java.com.sistemaingresso.repository.LoteRepository;
 import src.java.com.sistemaingresso.model.*;
@@ -29,7 +30,8 @@ public class LoteService {
 
     private HashMap<Long, Ingresso> ingressosNaoVendidos(Integer qtdNormal, Integer qtdVip){
         HashMap<Long, Ingresso> ingressosNaoVendidos = ingressoRepository.getIngressoVipNaoVendido(qtdVip);
-        ingressosNaoVendidos.putAll(ingressoRepository.getIngressoNormalNaoVendido(qtdNormal));
+        HashMap<Long, Ingresso> ingressosNormais = ingressoRepository.getIngressoNormalNaoVendido(qtdNormal);
+        ingressosNaoVendidos.putAll(ingressosNormais);
         return ingressosNaoVendidos;
     }
 

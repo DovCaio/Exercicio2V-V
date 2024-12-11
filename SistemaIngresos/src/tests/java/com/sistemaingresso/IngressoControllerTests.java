@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import src.java.com.sistemaingresso.IngressosInsuficientes;
 import src.java.com.sistemaingresso.controller.IngressoController;
 import src.java.com.sistemaingresso.model.Lote;
 
@@ -17,7 +18,7 @@ public class IngressoControllerTests {
 
     @BeforeEach
     public void setUp() {
-        this.ingressoController = new IngressoController(preco);
+        this.ingressoController = new IngressoController(preco, 200);
 
     }
 
@@ -89,8 +90,6 @@ public class IngressoControllerTests {
 
     }
 
-
-
     @Test
     public void testLoteDesconto(){
         Lote lote1 = ingressoController.getLote(10, 20);
@@ -104,6 +103,28 @@ public class IngressoControllerTests {
         assertEquals( 20 ,lote3.getDesconto());
         assertEquals( 15 ,lote4.getDesconto());
         assertEquals( 25 ,lote5.getDesconto());
+
+    }
+
+    @Test
+    public void testLoteNaoSuficiente(){
+
+        assertThrows(IngressosInsuficientes.class, () -> {
+            Lote lote1 = ingressoController.getLote(200, 0);
+        });
+
+        assertThrows(IngressosInsuficientes.class, () -> {
+            Lote lote1 = ingressoController.getLote(25, 0);
+            Lote lote2 = ingressoController.getLote(25, 0);
+            Lote lote3 = ingressoController.getLote(25, 0);
+        });
+
+
+        assertThrows(IngressosInsuficientes.class, () -> {
+            Lote lote1 = ingressoController.getLote(0, 30);
+            Lote lote2 = ingressoController.getLote(0, 30);
+            Lote lote3 = ingressoController.getLote(0, 30);
+        });
 
     }
 }

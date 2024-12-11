@@ -1,6 +1,7 @@
 package src.java.com.sistemaingresso.service;
 
-import src.java.com.sistemaingresso.IngressosInsuficientes;
+import src.java.com.sistemaingresso.exceptions.IngressosInsuficientes;
+import src.java.com.sistemaingresso.exceptions.QuantidadeIncorretaIngressos;
 import src.java.com.sistemaingresso.repository.IngressoRepository;
 import src.java.com.sistemaingresso.repository.LoteRepository;
 import src.java.com.sistemaingresso.model.*;
@@ -29,6 +30,9 @@ public class LoteService {
     }
 
     private HashMap<Long, Ingresso> ingressosNaoVendidos(Integer qtdNormal, Integer qtdVip){
+
+        if( qtdNormal < 0 || qtdVip < 0) throw new QuantidadeIncorretaIngressos();
+
         HashMap<Long, Ingresso> ingressosNaoVendidos = ingressoRepository.getIngressoVipNaoVendido(qtdVip);
         if(ingressosNaoVendidos.size() < qtdVip) throw new IngressosInsuficientes();
         HashMap<Long, Ingresso> ingressosNormais = ingressoRepository.getIngressoNormalNaoVendido(qtdNormal);

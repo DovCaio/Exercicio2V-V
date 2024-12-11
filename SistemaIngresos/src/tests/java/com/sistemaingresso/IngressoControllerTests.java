@@ -3,11 +3,11 @@ package src.tests.java.com.sistemaingresso;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import src.java.com.sistemaingresso.IngressosInsuficientes;
+import src.java.com.sistemaingresso.exceptions.IngressosInsuficientes;
 import src.java.com.sistemaingresso.controller.IngressoController;
+import src.java.com.sistemaingresso.exceptions.QuantidadeIncorretaIngressos;
 import src.java.com.sistemaingresso.model.Lote;
 
 

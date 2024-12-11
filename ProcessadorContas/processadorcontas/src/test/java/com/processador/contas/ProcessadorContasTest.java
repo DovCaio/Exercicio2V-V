@@ -7,6 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.processador.contas.enums.StatusFatura;
+import com.processador.contas.enums.TipoPagamento;
+import com.processador.contas.models.Conta;
+import com.processador.contas.models.Fatura;
+
 public class ProcessadorContasTest {
 
     @Test

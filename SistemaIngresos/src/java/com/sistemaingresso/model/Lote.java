@@ -26,15 +26,8 @@ public class Lote {
         return ingressos;
     }
 
-    public void setIngressos(HashMap<Long,Ingresso> ingressos) {
-        this.ingressos = ingressos;
+    public Double getDesconto() {
+        return desconto;
     }
 
-    public Double getDisconto() {
-        return disconto;
-    }
-
-    public void setDisconto(Double disconto) {
-        this.disconto = disconto;
-    }
 }

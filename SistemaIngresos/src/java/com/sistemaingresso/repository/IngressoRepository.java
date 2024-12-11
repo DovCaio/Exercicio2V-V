@@ -3,6 +3,8 @@ package src.java.com.sistemaingresso.repository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import src.java.com.sistemaingresso.enums.TIPOINGRESSO;
 import src.java.com.sistemaingresso.model.*;
@@ -75,5 +77,25 @@ public class IngressoRepository {
     public Ingresso getIngresso(Long id) {
         return ingressos.get(id);
     }
+    public HashMap<Long, Ingresso> getIngressos() {
+        return ingressos;
+    }
 
+    //Além de recuperar esses métodos, getIngressoVipNaoVendido e getIngressoNormalNaoVendodios, também já colocam os ingressos recuperados como vendidos.
+    public HashMap<Long, Ingresso> getIngressoVipNaoVendido(Integer qtd){
+        return ingressos.entrySet().stream()
+                .filter(ingresso -> !ingresso.getValue().getVendido() &&
+                        ingresso.getValue().getTipo().equals(TIPOINGRESSO.VIP))
+                .limit(qtd)
+                .peek(ingresso -> ingresso.getValue().setVendido(true))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
+    public HashMap<Long, Ingresso> getIngressoNormalNaoVendido(Integer qtd) {
+        return ingressos.entrySet().stream()
+                .filter(ingresso -> !ingresso.getValue().getVendido() &&
+                        ingresso.getValue().getTipo().equals(TIPOINGRESSO.NORMAL))
+                .limit(qtd)
+                .peek(ingresso -> ingresso.getValue().setVendido(true))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
 }

@@ -71,4 +71,8 @@ public class IngressoService {
     public Ingresso getIngresso(Long id) {
         return ingressoRepository.getIngresso(id);
     }
+
+    public IngressoRepository getIngressoRepository(){
+        return ingressoRepository;
+    }
 }

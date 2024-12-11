@@ -30,7 +30,9 @@ public class LoteService {
 
     private HashMap<Long, Ingresso> ingressosNaoVendidos(Integer qtdNormal, Integer qtdVip){
         HashMap<Long, Ingresso> ingressosNaoVendidos = ingressoRepository.getIngressoVipNaoVendido(qtdVip);
+        if(ingressosNaoVendidos.size() < qtdVip) throw new IngressosInsuficientes();
         HashMap<Long, Ingresso> ingressosNormais = ingressoRepository.getIngressoNormalNaoVendido(qtdNormal);
+        if(ingressosNormais.size() < qtdNormal) throw new IngressosInsuficientes();
         ingressosNaoVendidos.putAll(ingressosNormais);
         return ingressosNaoVendidos;
     }

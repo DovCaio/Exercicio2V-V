@@ -127,4 +127,24 @@ public class IngressoControllerTests {
         });
 
     }
+
+    @Test
+    public void testParametrosIndevidosGerarLote(){
+        assertThrows(QuantidadeIncorretaIngressos.class, () -> {
+            Lote lote1 = ingressoController.getLote(-1, 30);
+        });
+
+        assertThrows(QuantidadeIncorretaIngressos.class, () -> {
+            Lote lote1 = ingressoController.getLote(-100, 30);
+        });
+
+
+        assertThrows(QuantidadeIncorretaIngressos.class, () -> {
+            Lote lote1 = ingressoController.getLote(10, -1);
+        });
+
+        assertThrows(QuantidadeIncorretaIngressos.class, () -> {
+            Lote lote1 = ingressoController.getLote(10, -55);
+        });
+    }
 }

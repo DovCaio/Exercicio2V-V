@@ -15,10 +15,11 @@ public class IngressoControllerTests {
 
     private IngressoController ingressoController;
     private final Double preco = 200.0;
+    private  final Integer qtdIngressos = 200;
 
     @BeforeEach
     public void setUp() {
-        this.ingressoController = new IngressoController(preco, 200);
+        this.ingressoController = new IngressoController(preco, qtdIngressos);
 
     }
 
@@ -146,5 +147,23 @@ public class IngressoControllerTests {
         assertThrows(QuantidadeIncorretaIngressos.class, () -> {
             Lote lote1 = ingressoController.getLote(10, -55);
         });
+    }
+
+    @Test
+    public void testQuantidadeIngressosVendidos(){
+
+        for(int i = (int) (qtdIngressos * 0.9); i < qtdIngressos; i++){
+            ingressoController.marcarComoVendido((long) i);
+        }
+
+        ingressoController.getLote(40, 20);
+
+        Integer qtdVendidosNormal = ingressoController.qtdVendidosNormal();
+        Integer qtdVendidosVip = ingressoController.qtdVendidosVip();
+        Integer qtdVendidosMeia = ingressoController.qtdVendidosMeia();
+
+        assertEquals(40, qtdVendidosNormal);
+        assertEquals(20, qtdVendidosVip);
+        assertEquals((int) (0.1*qtdIngressos), qtdVendidosMeia);
     }
 }

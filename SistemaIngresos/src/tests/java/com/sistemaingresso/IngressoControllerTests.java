@@ -166,4 +166,17 @@ public class IngressoControllerTests {
         assertEquals(20, qtdVendidosVip);
         assertEquals((int) (0.1*qtdIngressos), qtdVendidosMeia);
     }
+
+    @Test
+    public void testReceitaLiquidaDiaNormal(){
+        for(int i = (int) (qtdIngressos * 0.95); i < qtdIngressos; i++){
+            ingressoController.marcarComoVendido((long) i);
+        }
+
+        ingressoController.getLote(53, 14);
+
+        assertEquals(2000.0, ingressoController.getReceitaMeia());
+        assertEquals(10600.0, ingressoController.getReceitaNormal());
+        assertEquals(5600.0, ingressoController.getReceitaVip());
+    }
 }

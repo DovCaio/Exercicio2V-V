@@ -98,4 +98,25 @@ public class IngressoRepository {
                 .peek(ingresso -> ingresso.getValue().setVendido(true))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
     }
+
+    public HashMap<Long, Ingresso> getIngressoNormalVendido() {
+        return ingressos.entrySet().stream()
+                .filter(ingresso -> ingresso.getValue().getVendido() &&
+                        ingresso.getValue().getTipo().equals(TIPOINGRESSO.NORMAL))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
+
+    public HashMap<Long, Ingresso> getIngressoMeiaVendido() {
+        return ingressos.entrySet().stream()
+                .filter(ingresso -> ingresso.getValue().getVendido() &&
+                        ingresso.getValue().getTipo().equals(TIPOINGRESSO.MEIAENTRADA))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
+
+    public HashMap<Long, Ingresso> getIngressoVipVendido() {
+        return ingressos.entrySet().stream()
+                .filter(ingresso -> ingresso.getValue().getVendido() &&
+                        ingresso.getValue().getTipo().equals(TIPOINGRESSO.VIP))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
 }

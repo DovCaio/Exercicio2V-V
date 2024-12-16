@@ -3,17 +3,19 @@ package src.java.com.sistemaingresso.controller;
 import src.java.com.sistemaingresso.service.IngressoService;
 import src.java.com.sistemaingresso.model.*;
 import src.java.com.sistemaingresso.service.LoteService;
+import src.java.com.sistemaingresso.service.RelatorioService;
 
 public class IngressoController {
 
     private final IngressoService ingressoService;
     private final LoteService loteService;
+    private final RelatorioService relatorioService;
 
     public IngressoController(Double precoIngressoNormal, Integer qtdIngresso){
 
         this.ingressoService = new IngressoService(qtdIngresso, precoIngressoNormal);
         this.loteService = new LoteService(ingressoService.getIngressoRepository());
-
+        this.relatorioService = new RelatorioService(ingressoService.getIngressoRepository());
     }
 
     public Integer quantidadeTotal() {
@@ -60,4 +62,15 @@ public class IngressoController {
     }
 
 
+    public Integer qtdVendidosNormal(){
+        return relatorioService.qtdVendidosNormal();
+    }
+
+    public Integer qtdVendidosVip() {
+        return relatorioService.qtdVendidosVip();
+    }
+
+    public Integer qtdVendidosMeia() {
+        return relatorioService.qtdVendidosMeia();
+    }
 }

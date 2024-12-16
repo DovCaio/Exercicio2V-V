@@ -16,6 +16,10 @@ public class IngressoRepository {
     private Integer qtdVip;
     private Integer qtdMeia;
     private Integer qtdNormal;
+    private Double precoNormal;
+    private Double precoVip;
+    private Double precoMeia;
+
 
     //MUITA RESONSABILIDADE NO REPOSITORIO, MUDAR OS CALCULOS PARA O SERVICE.
     public IngressoRepository(Integer qttTotal,
@@ -25,6 +29,9 @@ public class IngressoRepository {
                               Double precoVip,
                               Double precoMeia
     ) {
+        this.precoNormal = precoNormal;
+        this.precoVip = precoVip;
+        this.precoMeia = precoMeia;
         currentId = 0L;
         this.ingressos = new HashMap<Long, Ingresso>();
 
@@ -118,5 +125,17 @@ public class IngressoRepository {
                 .filter(ingresso -> ingresso.getValue().getVendido() &&
                         ingresso.getValue().getTipo().equals(TIPOINGRESSO.VIP))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2)-> e1, HashMap::new));
+    }
+
+    public Double getPrecoNormal() {
+        return precoNormal;
+    }
+
+    public Double getPrecoVip() {
+        return precoVip;
+    }
+
+    public Double getPrecoMeia() {
+        return precoMeia;
     }
 }

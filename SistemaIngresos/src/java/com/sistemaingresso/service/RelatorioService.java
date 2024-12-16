@@ -23,4 +23,14 @@ public class RelatorioService {
        return ingressoRepository.getIngressoMeiaVendido().size();
 
     }
+
+    public Double receitaMeia(){
+        return qtdVendidosMeia() * ingressoRepository.getPrecoMeia();
+    }
+    public Double receitaNormal(){
+        return  qtdVendidosNormal() * ingressoRepository.getPrecoNormal();
+    }
+    public Double receitaVip(){
+        return  qtdVendidosVip() * ingressoRepository.getPrecoVip();
+    }
 }

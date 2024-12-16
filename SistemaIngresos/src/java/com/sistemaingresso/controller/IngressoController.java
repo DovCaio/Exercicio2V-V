@@ -73,4 +73,17 @@ public class IngressoController {
     public Integer qtdVendidosMeia() {
         return relatorioService.qtdVendidosMeia();
     }
+
+    public Double getReceitaMeia(){
+        return relatorioService.receitaMeia();
+    }
+
+
+    public Double getReceitaVip(){
+        return relatorioService.receitaVip();
+    }
+    public Double getReceitaNormal(){
+        return relatorioService.receitaNormal();
+    }
+
 }

@@ -1,10 +1,9 @@
 package com.processador.contas;
 
-import static org.junit.Assert.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.processador.contas.enums.StatusFatura;
@@ -47,28 +46,45 @@ public class ProcessadorContasTest {
     public void deveAplicarMultaParaBoletosAtrasados() {
         Fatura fatura = new Fatura("Cliente C", 1500.00, LocalDate.of(2023, 2, 20));
         List<Conta> contas = List.of(
-            new Conta("001", LocalDate.of(2023, 2, 22), 500.00, TipoPagamento.BOLETO)
+            new Conta("001", LocalDate.of(2023, 2, 22), 500.00, TipoPagamento.BOLETO) // Boleto atrasado
         );
 
         ProcessadorContas processador = new ProcessadorContas();
         processador.processarFatura(fatura, contas);
 
-        // Multa de 10% aplicada ao valor do boleto
+        double valorTotalPagamentos = contas.stream()
+            .filter(c -> c.getTipoPagamento() == TipoPagamento.BOLETO)
+            .mapToDouble(c -> c.getValorPago() * (c.getData().isAfter(fatura.getData()) ? 1.10 : 1.0))
+            .sum();
+
         assertEquals(StatusFatura.PENDENTE, fatura.getStatus());
+        assertEquals(550.00, valorTotalPagamentos, 0.01); // Confirma que a multa foi aplicada corretamente
     }
+
 
     @Test
     public void deveIgnorarPagamentosPorCartaoDeCreditoForaDoPrazo() {
         Fatura fatura = new Fatura("Cliente D", 1500.00, LocalDate.of(2023, 2, 20));
         List<Conta> contas = List.of(
-            new Conta("001", LocalDate.of(2023, 2, 10), 700.00, TipoPagamento.CARTAO_CREDITO)
+            new Conta("001", LocalDate.of(2023, 2, 10), 700.00, TipoPagamento.CARTAO_CREDITO) // Fora do prazo
         );
 
         ProcessadorContas processador = new ProcessadorContas();
         processador.processarFatura(fatura, contas);
 
         assertEquals(StatusFatura.PENDENTE, fatura.getStatus());
+
+        double valorPagamentos = contas.stream()
+            .mapToDouble(c -> c.getTipoPagamento() == TipoPagamento.CARTAO_CREDITO 
+                            && c.getData().isBefore(fatura.getData().minusDays(15)) 
+                            ? c.getValorPago() : 0)
+            .sum();
+
+        double valorRestante = fatura.getValorTotal() - valorPagamentos;
+
+        assertEquals(1500.00, valorRestante, 0.01); 
     }
+
 
     @Test
     public void deveIncluirPagamentosPorCartaoDeCreditoDentroDoPrazo() {

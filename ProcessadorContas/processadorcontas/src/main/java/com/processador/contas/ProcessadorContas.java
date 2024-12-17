@@ -8,10 +8,20 @@ import com.processador.contas.enums.TipoPagamento;
 import com.processador.contas.models.Conta;
 import com.processador.contas.models.Fatura;
 import com.processador.contas.models.Pagamento;
+import com.processador.contas.validators.ProcessadorContasValidator;
 
 public class ProcessadorContas {
 
+    private final ProcessadorContasValidator validator;
+
+    public ProcessadorContas() {
+        this.validator = new ProcessadorContasValidator();
+    }
+
     public void processarFatura(Fatura fatura, List<Conta> contas) {
+        validator.validarFatura(fatura);
+        validator.validarContas(contas);
+
         List<Pagamento> pagamentos = gerarPagamentos(contas, fatura);
         double somaPagamentos = pagamentos.stream().mapToDouble(Pagamento::getValor).sum();
 
@@ -23,9 +33,14 @@ public class ProcessadorContas {
     }
 
     private List<Pagamento> gerarPagamentos(List<Conta> contas, Fatura fatura) {
+        validator.validarFatura(fatura);
+        validator.validarContas(contas);
+
         List<Pagamento> pagamentos = new ArrayList<>();
 
         for (Conta conta : contas) {
+            validator.validarConta(conta);
+
             double valor = 0;
             TipoPagamento tipo = conta.getTipoPagamento();
 
@@ -46,8 +61,11 @@ public class ProcessadorContas {
     }
 
     private double processarBoleto(Conta conta, Fatura fatura) {
+        validator.validarConta(conta);
+        validator.validarFatura(fatura);
+
         double valor = conta.getValorPago();
-        
+
         if (valor >= 0.01 && valor <= 5000.00) {
             if (conta.getData().isAfter(fatura.getData())) {
                 valor += valor * 0.10;
@@ -58,6 +76,9 @@ public class ProcessadorContas {
     }
 
     private double processarCartaoCredito(Conta conta, Fatura fatura) {
+        validator.validarConta(conta);
+        validator.validarFatura(fatura);
+
         if (conta.getData().isBefore(fatura.getData().minusDays(15))) {
             return conta.getValorPago();
         }
@@ -65,6 +86,9 @@ public class ProcessadorContas {
     }
 
     private double processarTransferencia(Conta conta, Fatura fatura) {
+        validator.validarConta(conta);
+        validator.validarFatura(fatura);
+
         if (!conta.getData().isAfter(fatura.getData())) {
             return conta.getValorPago();
         }

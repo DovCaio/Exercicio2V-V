@@ -11,7 +11,7 @@ public class IngressoController {
     private final LoteService loteService;
     private final RelatorioService relatorioService;
 
-    public IngressoController(Double precoIngressoNormal, Integer qtdIngresso){
+    public IngressoController(Double precoIngressoNormal, Integer qtdIngresso, Double gastos){
 
         this.ingressoService = new IngressoService(qtdIngresso, precoIngressoNormal);
         this.loteService = new LoteService(ingressoService.getIngressoRepository());
@@ -84,6 +84,10 @@ public class IngressoController {
     }
     public Double getReceitaNormal(){
         return relatorioService.receitaNormal();
+    }
+
+    public String infos(){
+        return "";
     }
 
 }

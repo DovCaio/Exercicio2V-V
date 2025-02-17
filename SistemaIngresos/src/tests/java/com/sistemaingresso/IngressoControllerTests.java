@@ -19,7 +19,7 @@ public class IngressoControllerTests {
 
     @BeforeEach
     public void setUp() {
-        this.ingressoController = new IngressoController(preco, qtdIngressos);
+        this.ingressoController = new IngressoController(preco, qtdIngressos, 0D);
 
     }
 

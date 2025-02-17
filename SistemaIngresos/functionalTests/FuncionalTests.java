@@ -1,18 +1,14 @@
-package src.tests.java.com.sistemaingresso;
+package functionalTests;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import src.java.com.sistemaingresso.exceptions.IngressosInsuficientes;
 import src.java.com.sistemaingresso.controller.IngressoController;
-import src.java.com.sistemaingresso.exceptions.QuantidadeIncorretaIngressos;
-import src.java.com.sistemaingresso.model.Lote;
 
-public class SuiteTestes3Ex {
+public class FuncionalTests {
 
     final private Integer qttMaxima = 10000;
     final private Double valorMaximo = 5000D;

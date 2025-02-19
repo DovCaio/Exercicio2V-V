@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.processador.contas.functionalTests.AnaliseValoresLimiteTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.141 s <<< FAILURE! - in com.processador.contas.functionalTests.AnaliseValoresLimiteTest
+deveMarcarFaturaComoPagaQuandoPagamentoExatamenteIgual(com.processador.contas.functionalTests.AnaliseValoresLimiteTest)  Time elapsed: 0.013 s  <<< FAILURE!
+java.lang.AssertionError: expected:<PAGA> but was:<PENDENTE>
+	at com.processador.contas.functionalTests.AnaliseValoresLimiteTest.deveMarcarFaturaComoPagaQuandoPagamentoExatamenteIgual(AnaliseValoresLimiteTest.java:51)
+
+deveMarcarFaturaComoPendenteQuandoNaoHaPagamentos(com.processador.contas.functionalTests.AnaliseValoresLimiteTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IllegalArgumentException: A lista de contas não pode ser nula ou vazia
+	at com.processador.contas.functionalTests.AnaliseValoresLimiteTest.deveMarcarFaturaComoPendenteQuandoNaoHaPagamentos(AnaliseValoresLimiteTest.java:23)
+

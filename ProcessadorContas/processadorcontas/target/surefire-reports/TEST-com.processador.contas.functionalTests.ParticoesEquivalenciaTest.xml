@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.processador.contas.ProcessadorContasTest" time="0.077" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0.204" tests="6" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\yalle\AppData\Local\Temp\surefire11570645518976663698\surefirebooter11243996316891181818.jar C:\Users\yalle\AppData\Local\Temp\surefire11570645518976663698 2025-02-18T20-50-16_798-jvmRun1 surefire2726226224777058370tmp surefire_05289883438123404943tmp"/>
+    <property name="sun.java.command" value="C:\Users\yalle\AppData\Local\Temp\surefire2995101144239110202\surefirebooter6794701479022698087.jar C:\Users\yalle\AppData\Local\Temp\surefire2995101144239110202 2025-02-18T22-42-12_387-jvmRun1 surefire11329913345068098579tmp surefire_03935501453746123374tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.processador.contas.ProcessadorContasTest#deveAplicarMultaParaBoletosAtrasados"/>
+    <property name="test" value="com.processador.contas.functionalTests.ParticoesEquivalenciaTest"/>
     <property name="surefire.test.class.path" value="C:\Users\yalle\Desktop\Exercicio2V-V\ProcessadorContas\processadorcontas\target\test-classes;C:\Users\yalle\Desktop\Exercicio2V-V\ProcessadorContas\processadorcontas\target\classes;C:\Users\yalle\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\yalle\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\yalle"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\yalle\AppData\Local\Temp\surefire11570645518976663698\surefirebooter11243996316891181818.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\yalle\AppData\Local\Temp\surefire2995101144239110202\surefirebooter6794701479022698087.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.8+9-LTS-211"/>
@@ -58,5 +58,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="deveAplicarMultaParaBoletosAtrasados" classname="com.processador.contas.ProcessadorContasTest" time="0.017"/>
+  <testcase name="deveIgnorarPagamentoPorCartaoDeCreditoForaDoPrazo" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0.042"/>
+  <testcase name="deveMarcarFaturaComoPendenteSeSomaDosPagamentosForInferior" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0"/>
+  <testcase name="deveMarcarFaturaComoPagaQuandoBoletoPagoNoPrazo" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0"/>
+  <testcase name="deveMarcarFaturaComoPagaSeSomaDosPagamentosForMaiorQueFatura" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0.001"/>
+  <testcase name="deveAceitarPagamentoPorCartaoDeCreditoSeDentroDoPrazo" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0.001"/>
+  <testcase name="deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura" classname="com.processador.contas.functionalTests.ParticoesEquivalenciaTest" time="0.013">
+    <failure message="expected:&lt;PENDENTE&gt; but was:&lt;PAGA&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<PENDENTE> but was:<PAGA>
+	at com.processador.contas.functionalTests.ParticoesEquivalenciaTest.deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura(ParticoesEquivalenciaTest.java:40)
+]]></failure>
+  </testcase>
 </testsuite>

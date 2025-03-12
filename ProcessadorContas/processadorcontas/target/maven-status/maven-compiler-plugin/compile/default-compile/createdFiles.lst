@@ -1,0 +1,7 @@
+com\processador\contas\enums\TipoPagamento.class
+com\processador\contas\ProcessadorContas.class
+com\processador\contas\models\Conta.class
+com\processador\contas\models\Fatura.class
+com\processador\contas\models\Pagamento.class
+com\processador\contas\enums\StatusFatura.class
+com\processador\contas\validators\ProcessadorContasValidator.class

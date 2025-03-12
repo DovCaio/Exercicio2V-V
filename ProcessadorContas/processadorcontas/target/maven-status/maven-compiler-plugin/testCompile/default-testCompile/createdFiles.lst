@@ -1,0 +1,7 @@
+com\processador\contas\functionalTests\AnaliseValoresLimiteTest.class
+com\processador\contas\functionalTests\ParticoesEquivalenciaTest.class
+com\processador\contas\ProcessadorContasTest.class
+com\processador\contas\functionalTests\TabelasDecisaoTest.class
+com\processador\contas\functionalTestsJ5\ParticoesEquivalenciaJ5Test.class
+com\processador\contas\functionalTestsJ5\AnaliseValoresLimiteJ5Test.class
+com\processador\contas\functionalTestsJ5\TabelasDecisaoTestJ5.class

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.processador.contas.functionalTests.ParticoesEquivalenciaTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.204 s <<< FAILURE! - in com.processador.contas.functionalTests.ParticoesEquivalenciaTest
-deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura(com.processador.contas.functionalTests.ParticoesEquivalenciaTest)  Time elapsed: 0.013 s  <<< FAILURE!
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in com.processador.contas.functionalTests.ParticoesEquivalenciaTest
+deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura  Time elapsed: 0 s  <<< FAILURE!
 java.lang.AssertionError: expected:<PENDENTE> but was:<PAGA>
 	at com.processador.contas.functionalTests.ParticoesEquivalenciaTest.deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura(ParticoesEquivalenciaTest.java:40)
 

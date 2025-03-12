@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.processador.contas.functionalTestsJ5.ParticoesEquivalenciaJ5Test
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in com.processador.contas.functionalTestsJ5.ParticoesEquivalenciaJ5Test
+deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <PENDENTE> but was: <PAGA>
+	at com.processador.contas.functionalTestsJ5.ParticoesEquivalenciaJ5Test.deveMarcarFaturaComoPendenteQuandoBoletoPagoAposDataDaFatura(ParticoesEquivalenciaJ5Test.java:55)
+

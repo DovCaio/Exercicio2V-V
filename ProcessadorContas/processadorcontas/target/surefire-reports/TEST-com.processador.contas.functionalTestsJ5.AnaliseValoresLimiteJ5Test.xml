@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.processador.contas.ProcessadorContasTest" time="0.001" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.092" tests="8" errors="1" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -56,10 +56,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="naoDevePermitirPagamentoBoletoComValorInvalido" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
-  <testcase name="deveMarcarFaturaComoPendenteQuandoPagamentosInsuficientes" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
-  <testcase name="deveAplicarMultaParaBoletosAtrasados" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
-  <testcase name="deveIncluirPagamentosPorCartaoDeCreditoDentroDoPrazo" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
-  <testcase name="deveIgnorarPagamentosPorCartaoDeCreditoForaDoPrazo" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
-  <testcase name="deveMarcarFaturaComoPagaQuandoPagamentosSuficientes" classname="com.processador.contas.ProcessadorContasTest" time="0"/>
+  <testcase name="deveMarcarFaturaComoPendenteQuandoNaoHaPagamentos" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.053">
+    <error message="A lista de contas não pode ser nula ou vazia" type="java.lang.IllegalArgumentException">java.lang.IllegalArgumentException: A lista de contas não pode ser nula ou vazia
+	at com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test.deveMarcarFaturaComoPendenteQuandoNaoHaPagamentos(AnaliseValoresLimiteJ5Test.java:37)
+</error>
+  </testcase>
+  <testcase name="deveMarcarFaturaComoPendenteQuandoPagamentoInsuficiente" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.01"/>
+  <testcase name="deveMarcarFaturaComoPagaQuandoPagamentoExatamenteIgual" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.003">
+    <failure message="expected: &lt;PAGA&gt; but was: &lt;PENDENTE&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <PAGA> but was: <PENDENTE>
+	at com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test.deveMarcarFaturaComoPagaQuandoPagamentoExatamenteIgual(AnaliseValoresLimiteJ5Test.java:67)
+]]></failure>
+  </testcase>
+  <testcase name="deveMarcarFaturaComoPagaQuandoPagamentoMaiorQueFatura" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.002"/>
+  <testcase name="deveRejeitarBoletoComValorAcimaDoPermitido" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.002"/>
+  <testcase name="deveMarcarFaturaComoPendenteQuandoCartaoForaDoPrazo" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.001"/>
+  <testcase name="deveMarcarFaturaComoPagaQuandoBoletoPagoAntesDoVencimento" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.001"/>
+  <testcase name="deveMarcarFaturaComoPendenteQuandoPagamentoMenorQueFatura" classname="com.processador.contas.functionalTestsJ5.AnaliseValoresLimiteJ5Test" time="0.001"/>
 </testsuite>
